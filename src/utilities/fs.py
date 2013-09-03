@@ -10,16 +10,15 @@ import os
 def get_dated_input_files(start_time, end_time, input_folder):
   current = start_time
   while current <= end_time:
-    input_folder = input_folder + "%s/%s/%s/" % (current.year,
+    in_folder = input_folder + "%s/%s/%s/" % (current.year,
                                                  current.month,
                                                  current.day)
-    print input_folder
-    if os.path.exists(input_folder):
-      for root, _, files in os.walk(input_folder):
+    if os.path.exists(in_folder):
+      for root, _, files in os.walk(in_folder):
         for fl in files:
           input_file = root+fl
-          print input_file
-          #yield input_file
+          #print input_file
+          yield input_file
     current += relativedelta(days=1)
 
 if __name__ == "__main__":
