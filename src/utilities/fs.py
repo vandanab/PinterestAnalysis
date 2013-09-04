@@ -4,7 +4,7 @@ Created on Sep 2, 2013
 Contains filesystem related utilities
 '''
 import sys
-sys.path.append("/Users/vardharaj/workspace/PinterestAnalysis/")
+sys.path.append("/home/vardharaj/workspace/PinterestAnalysis/")
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from src.settings import chevron_base_dir

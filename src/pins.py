@@ -18,7 +18,7 @@ class Pins(ModifiedMRJob):
   
   def configure_options(self):
     super(Pins, self).configure_options()
-    self.add_file_option('--users', default='users.txt')
+    self.add_file_option('--users', default='/home/vardharaj/workspace/PinterestAnalysis/data/results/users/users.txt')
   """
   mapper for finding valid users in pinterest data 
   """

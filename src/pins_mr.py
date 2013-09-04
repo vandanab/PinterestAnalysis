@@ -5,10 +5,8 @@ map reduce runner for pin related analysis of pinterest data
 '''
 from datetime import datetime
 from library.mrjobwrapper import runMRJob
-from settings import f_users, hdfs_base_dir, chevron_base_dir, hdfs_rel_path
+from settings import f_pins, hdfs_base_dir, chevron_base_dir, hdfs_rel_path
 from pins import Pins
-from settings import f_users, hdfs_base_dir
-from users import Users
 from utilities import fs
 
 class PinsMRJobRunner(object):
@@ -36,9 +34,9 @@ class PinsMRJobRunner(object):
   def run():
     input_files_start_time, input_files_end_time = \
                             datetime(2012, 12, 12), datetime(2013, 9, 1)
-    PinsMRJobRunner.get_users(input_files_start_time,
+    PinsMRJobRunner.get_pins(input_files_start_time,
                                input_files_end_time,
-                               hdfs_base_dir)
+                               chevron_base_dir)
 
 if __name__ == '__main__':
   PinsMRJobRunner.run()
