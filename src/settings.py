@@ -13,3 +13,4 @@ hdfs_base_dir = "/Users/vardharaj/workspace/PinterestAnalysis/data/input/users/"
 hdfs_rel_path = "hdfs:///user/vardharaj/pins/"
 f_users = rex_local_base_dir % "users" + "users.txt"
 f_pins = rex_local_base_dir % "pins" + "pins.txt"
+

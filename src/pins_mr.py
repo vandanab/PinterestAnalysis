@@ -7,13 +7,15 @@ from datetime import datetime
 from library.mrjobwrapper import runMRJob
 from settings import f_users, hdfs_base_dir, chevron_base_dir, hdfs_rel_path
 from pins import Pins
+from settings import f_users, hdfs_base_dir
+from users import Users
 from utilities import fs
 
 class PinsMRJobRunner(object):
   @staticmethod
   def get_pins(input_files_start_time, input_files_end_time, input_folder):
     mr_class = Pins
-    output_file = f_users
+    output_file = f_pins
     chevron_files = fs.get_dated_input_files(input_files_start_time,
                                       input_files_end_time,
                                       input_folder)
@@ -34,7 +36,7 @@ class PinsMRJobRunner(object):
   def run():
     input_files_start_time, input_files_end_time = \
                             datetime(2012, 12, 12), datetime(2013, 9, 1)
-    PinsMRJobRunner.get_pins(input_files_start_time,
+    PinsMRJobRunner.get_users(input_files_start_time,
                                input_files_end_time,
                                hdfs_base_dir)
 
