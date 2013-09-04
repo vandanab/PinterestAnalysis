@@ -22,11 +22,11 @@ def get_dated_input_files(start_time, end_time, input_folder):
         for fl in files:
           input_file = root+fl
           rel_file_path = rel_path + fl
-          #print input_file
-          #yield input_file
-          input_files.append(rel_file_path)
+          yield input_file
+          #yield rel_file_path
+          #input_files.append(input_files)
     current += relativedelta(days=1)
-  return input_files
+  #return input_files
 
   
 if __name__ == "__main__":

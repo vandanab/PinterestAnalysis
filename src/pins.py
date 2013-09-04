@@ -23,9 +23,12 @@ class Pins(ModifiedMRJob):
   mapper for finding valid users in pinterest data 
   """
   def mapper(self, key, line):
-    data = cjson.decode(line)
-    if data['pin_user'] in self.users:
-      yield data['pin_user'], data
+    try:
+      data = cjson.decode(line)
+      if data['pin_user'] in self.users:
+        yield data['pin_user'], data
+    except:
+      print line
 
   def reducer(self, key, values):
     #till July's data pin_user is username
@@ -34,7 +37,7 @@ class Pins(ModifiedMRJob):
     user_pins['pins'] = []
     for pin in values:
       user_pins['pins'].append(pin)
-    yield data['pin_user'], user_pins
+    yield user_pins['userid'], user_pins
 
 if __name__ == "__main__":
   Pins.run()

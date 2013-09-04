@@ -5,7 +5,7 @@ map reduce runner for pin related analysis of pinterest data
 '''
 from datetime import datetime
 from library.mrjobwrapper import runMRJob
-from settings import f_pins, hdfs_base_dir, chevron_base_dir, hdfs_rel_path
+from settings import local_base_dir, f_pins, hdfs_base_dir, chevron_base_dir, hdfs_rel_path
 from pins import Pins
 from utilities import fs
 
@@ -17,13 +17,15 @@ class PinsMRJobRunner(object):
     chevron_files = fs.get_dated_input_files(input_files_start_time,
                                       input_files_end_time,
                                       input_folder)
+    
+    '''
     hdfs_files = []
     for file in chevron_files:
       hdfs_files = hdfs_rel_path + file
-      
+    ''' 
     runMRJob(mr_class,
              output_file,
-             hdfs_files,
+             chevron_files,
              mrJobClassParams = {'job_id': 'as'},
              # uncomment when running on local
              #args = [],
@@ -36,7 +38,7 @@ class PinsMRJobRunner(object):
                             datetime(2012, 12, 12), datetime(2013, 9, 1)
     PinsMRJobRunner.get_pins(input_files_start_time,
                                input_files_end_time,
-                               chevron_base_dir)
+                               local_base_dir)
 
 if __name__ == '__main__':
   PinsMRJobRunner.run()
